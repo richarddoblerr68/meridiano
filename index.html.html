@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MERIDIANO Logistic Group · Plataforma</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--fg:#10223a;--mut:#5b6b80;--brand:#0b3d6e;--acc:#1aa6a6;--line:#d8e1ec;--ok:#1b8a5a;--warn:#c47f00;--bad:#b3342f;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1726;--card:#16253a;--fg:#e6edf6;--mut:#9fb0c5;--brand:#6db3f2;--acc:#3cc6c6;--line:#27405e;--ok:#4cc38a;--warn:#e5a93a;--bad:#ef7f78;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1726;--card:#16253a;--fg:#e6edf6;--mut:#9fb0c5;--brand:#6db3f2;--acc:#3cc6c6;--line:#27405e;--ok:#4cc38a;--warn:#e5a93a;--bad:#ef7f78;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--brand);color:#fff;padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+:root[data-theme="dark"] header,:root:not([data-theme="light"]) header{}
+.logo{font-weight:800;letter-spacing:.12em}.logo small{display:block;font-weight:400;letter-spacing:.05em;opacity:.8;font-size:11px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer;font:inherit}
+nav button.on{background:#fff;color:#0b3d6e;font-weight:600}
+main{max-width:980px;margin:0 auto;padding:16px}
+section{display:none}section.on{display:block}
+.hero{background:linear-gradient(135deg,#0b3d6e,#1aa6a6);color:#fff;border-radius:14px;padding:32px 22px}
+.hero h1{margin:0 0 8px;font-size:28px}.hero p{max-width:560px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.card h3{margin:0 0 4px;font-size:16px;color:var(--brand)}
+h2{color:var(--brand);margin:20px 0 8px}
+input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:8px 0}
+.btn{background:var(--acc);color:#04282a;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font:inherit;font-weight:700}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:560px}
+th{background:var(--brand);color:#fff;text-align:left;padding:8px;font-size:13px}
+:root[data-theme="dark"] th{color:#0d1726}
+td{padding:8px;border-bottom:1px solid var(--line);font-size:14px}
+.tl{list-style:none;padding:0;margin:12px 0}.tl li{padding:6px 0 6px 28px;position:relative;color:var(--mut)}
+.tl li:before{content:"";position:absolute;left:4px;top:11px;width:12px;height:12px;border-radius:50%;border:2px solid var(--line);background:var(--card)}
+.tl li.d{color:var(--fg)}.tl li.d:before{background:var(--ok);border-color:var(--ok)}
+.tl li.c{color:var(--fg);font-weight:700}.tl li.c:before{background:var(--acc);border-color:var(--acc)}
+.kpi{font-size:26px;font-weight:800;color:var(--brand)}
+.tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:600;background:var(--line)}
+.note{color:var(--mut);font-size:13px}
+</style></head><body>
+<header><div class="logo">MERIDIANO<small>LOGISTIC GROUP · MLG</small></div>
+<nav id="nav"></nav></header>
+<main>
+
+<section id="inicio">
+<div class="hero"><h1>Tu carga, con rumbo claro</h1>
+<p>Somos un freight forwarder con foco en el Puerto de Montevideo. Coordinamos el comercio exterior de pymes uruguayas: vos vendés, nosotros ordenamos el viaje de la carga.</p>
+<button class="btn" onclick="go('seguimiento')">Seguí tu envío</button></div>
+<h2>Servicios</h2>
+<div class="grid">
+<div class="card"><h3>Marítimo FCL / LCL</h3>Contenedor completo o carga consolidada, con reservas y documentación coordinadas.</div>
+<div class="card"><h3>Aéreo</h3>Opción para carga urgente o de alto valor, con seguimiento por etapas.</div>
+<div class="card"><h3>Coordinación aduanera</h3>Articulamos con despachante de aduana y con terceros de transporte.</div>
+<div class="card"><h3>Seguimiento en línea</h3>Código de envío para ver en qué etapa está tu carga, sin llamar.</div></div>
+<h2>Pedí tu cotización</h2>
+<div class="card"><div class="row"><input id="fN" placeholder="Nombre o empresa"><input id="fE" placeholder="Correo electrónico"></div>
+<textarea id="fM" rows="3" placeholder="Contanos qué querés enviar o importar, origen y destino"></textarea>
+<p><button class="btn" onclick="lead()">Enviar consulta</button> <span id="fOk" class="note"></span></p></div>
+<p class="note">Prototipo académico. Empresa y datos ficticios.</p>
+</section>
+
+<section id="seguimiento">
+<h2>Seguimiento de envíos</h2>
+<div class="card"><div class="row"><input id="q" placeholder="Código, por ejemplo MLG-2026-001"><button class="btn" onclick="buscar()">Buscar</button></div>
+<div id="res" class="note">Ingresá el código que te dimos al contratar.</div></div>
+<h2>Panel interno</h2>
+<div class="card"><div class="row"><select id="eC"></select><input id="eO" placeholder="Origen"><input id="eD" value="Montevideo"><select id="eT"><option>Marítimo FCL</option><option>Marítimo LCL</option><option>Aéreo</option></select><input id="eF" type="date"></div>
+<button class="btn" onclick="addEnvio()">Crear envío</button></div>
+<div class="scroll card" style="margin-top:12px"><table><thead><tr><th>Código</th><th>Cliente</th><th>Ruta</th><th>Tipo</th><th>ETA</th><th>Etapa</th></tr></thead><tbody id="tE"></tbody></table></div>
+<p class="note">Meridiano no reparte: la última etapa es la liberación para retiro, el transporte final lo coordina un tercero.</p>
+</section>
+
+<section id="clientes">
+<h2>Clientes</h2>
+<div class="grid" id="kp"></div>
+<div class="card"><div class="row"><input id="cN" placeholder="Empresa"><input id="cR" placeholder="Rubro"><input id="cP" placeholder="Contacto"><input id="cE" placeholder="Correo"><input id="cT" placeholder="Teléfono"></div>
+<button class="btn" onclick="addCli()">Agregar cliente</button></div>
+<div class="scroll card" style="margin-top:12px"><table><thead><tr><th>Empresa</th><th>Rubro</th><th>Contacto</th><th>Correo</th><th>Envíos</th><th>Nota interna</th></tr></thead><tbody id="tC"></tbody></table></div>
+</section>
+
+<section id="consultas">
+<h2>Consultas y oportunidades (CRM)</h2>
+<p class="note">Las consultas del sitio web entran acá. Se mueven de estado hasta cerrar la venta, y al ganarlas se convierten en clientes.</p>
+<div class="scroll card"><table><thead><tr><th>Quién</th><th>Correo</th><th>Consulta</th><th>Estado</th><th></th></tr></thead><tbody id="tL"></tbody></table></div>
+<h2>Satisfacción posventa</h2>
+<div class="card">Al liberar un envío se pide una nota de 1 a 5 al cliente. Promedio actual: <b id="sat">-</b>
+<div class="row"><select id="sE"></select><select id="sN"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select><button class="btn" onclick="rate()">Registrar nota</button></div></div>
+</section>
+</main>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ET=["Booking confirmado","Carga en origen","Embarcado","En tránsito","Arribo al puerto de Montevideo","Despacho aduanero","Liberado para retiro"];
+const LS=["Nuevo","Contactado","Cotizado","Ganado","Perdido"];
+function seed(){return{cli:[{id:1,n:"Agroexport Litoral S.A.",r:"Agro",p:"Marta Rivas",e:"marta@litoral.example",t:"099 111 222",nota:"Exporta arroz, cliente frecuente"},{id:2,n:"Textiles del Plata",r:"Textil",p:"Diego Sosa",e:"diego@plata.example",t:"098 333 444",nota:"Importa telas de China"},{id:3,n:"Ferretería Central",r:"Comercio",p:"Lucía Pérez",e:"lucia@central.example",t:"097 555 666",nota:""}],env:[{c:"MLG-2026-001",cl:1,o:"Montevideo",d:"Rotterdam",t:"Marítimo FCL",s:3,f:"2026-11-20"},{c:"MLG-2026-002",cl:2,o:"Shanghái",d:"Montevideo",t:"Marítimo LCL",s:4,f:"2026-11-05"},{c:"MLG-2026-003",cl:3,o:"Miami",d:"Montevideo",t:"Aéreo",s:1,f:"2026-10-30"}],lead:[{n:"Pinturas Uruguay",e:"compras@pinturas.example",m:"Cotizar 2 contenedores desde Brasil",s:0}],notas:[]}}
+let S;try{S=JSON.parse(localStorage.getItem("mlg"))}catch(e){}if(!S||!S.env)S=seed();
+const save=()=>{try{localStorage.setItem("mlg",JSON.stringify(S))}catch(e){}};
+const cn=id=>(S.cli.find(c=>c.id==id)||{}).n||"-";
+function go(v){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id==v));document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v==v));try{location.hash=v}catch(e){}}
+$("#nav").innerHTML=[["inicio","Sitio web"],["seguimiento","Seguimiento"],["clientes","Clientes"],["consultas","Consultas"]].map(([v,t])=>`<button data-v="${v}" onclick="go('${v}')">${t}</button>`).join("");
+function line(e,full){return `<ul class="tl">${ET.map((x,i)=>`<li class="${i<e.s?"d":i==e.s?"c":""}">${x}</li>`).join("")}</ul>`}
+function buscar(){const c=$("#q").value.trim().toUpperCase(),e=S.env.find(x=>x.c==c);$("#res").innerHTML=e?`<b>${esc(e.c)}</b> · ${esc(e.o)} → ${esc(e.d)} · ${esc(e.t)}<br>ETA: ${esc(e.f||"a confirmar")}${line(e)}`:"No encontramos ese código. Revisalo e intentá de nuevo."}
+function addEnvio(){const o=$("#eO").value.trim();if(!o||!S.cli.length)return;const n=String(S.env.length+1).padStart(3,"0");S.env.push({c:"MLG-2026-"+n,cl:+$("#eC").value,o,d:$("#eD").value||"Montevideo",t:$("#eT").value,s:0,f:$("#eF").value});$("#eO").value="";save();draw()}
+function setEtapa(i,v){S.env[i].s=+v;save();draw()}
+function addCli(){const n=$("#cN").value.trim();if(!n)return;S.cli.push({id:Date.now(),n,r:$("#cR").value,p:$("#cP").value,e:$("#cE").value,t:$("#cT").value,nota:""});["cN","cR","cP","cE","cT"].forEach(k=>$("#"+k).value="");save();draw()}
+function setNota(i,v){S.cli[i].nota=v;save()}
+function lead(){const n=$("#fN").value.trim(),m=$("#fM").value.trim();if(!n||!m){$("#fOk").textContent="Completá nombre y consulta.";return}S.lead.push({n,e:$("#fE").value,m,s:0});$("#fN").value=$("#fE").value=$("#fM").value="";$("#fOk").textContent="¡Recibimos tu consulta! Te respondemos pronto.";save();draw()}
+function setLead(i,v){S.lead[i].s=+v;if(v==3&&!S.cli.some(c=>c.n==S.lead[i].n))S.cli.push({id:Date.now(),n:S.lead[i].n,r:"",p:"",e:S.lead[i].e,t:"",nota:"Convertido desde consulta"});save();draw()}
+function rate(){S.notas.push(+$("#sN").value);save();draw()}
+function draw(){
+const co=S.cli.map(c=>`<option value="${c.id}">${esc(c.n)}</option>`).join("");$("#eC").innerHTML=co;
+$("#sE").innerHTML=S.env.map(e=>`<option>${esc(e.c)}</option>`).join("");
+$("#tE").innerHTML=S.env.map((e,i)=>`<tr><td><b>${esc(e.c)}</b></td><td>${esc(cn(e.cl))}</td><td>${esc(e.o)} → ${esc(e.d)}</td><td>${esc(e.t)}</td><td>${esc(e.f)}</td><td><select onchange="setEtapa(${i},this.value)">${ET.map((x,k)=>`<option value="${k}"${k==e.s?" selected":""}>${x}</option>`).join("")}</select></td></tr>`).join("");
+const act=S.env.filter(e=>e.s<6).length,nu=S.lead.filter(l=>l.s==0).length;
+$("#kp").innerHTML=[[S.cli.length,"Clientes"],[act,"Envíos activos"],[nu,"Consultas nuevas"]].map(([v,t])=>`<div class="card"><div class="kpi">${v}</div>${t}</div>`).join("");
+$("#tC").innerHTML=S.cli.map((c,i)=>`<tr><td><b>${esc(c.n)}</b></td><td>${esc(c.r)}</td><td>${esc(c.p)}<br><span class="note">${esc(c.t)}</span></td><td>${esc(c.e)}</td><td>${S.env.filter(e=>e.cl==c.id).length}</td><td><input value="${esc(c.nota)}" onchange="setNota(${i},this.value)"></td></tr>`).join("");
+$("#tL").innerHTML=S.lead.map((l,i)=>`<tr><td><b>${esc(l.n)}</b></td><td>${esc(l.e)}</td><td>${esc(l.m)}</td><td><select onchange="setLead(${i},this.value)">${LS.map((x,k)=>`<option value="${k}"${k==l.s?" selected":""}>${x}</option>`).join("")}</select></td><td><span class="tag">${LS[l.s]}</span></td></tr>`).join("");
+$("#sat").textContent=S.notas.length?(S.notas.reduce((a,b)=>a+b,0)/S.notas.length).toFixed(1)+" / 5 ("+S.notas.length+" notas)":"sin notas"}
+draw();const h=(location.hash||"").slice(1);go(["inicio","seguimiento","clientes","consultas"].includes(h)?h:"inicio");
+</script></body></html>
